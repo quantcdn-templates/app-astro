@@ -1,0 +1,17 @@
+services:
+  astro:
+    image: ghcr.io/quantcdn-templates/app-astro:latest
+    build: .
+    restart: unless-stopped
+    ports:
+      - "4321:4321"
+    environment:
+      - NODE_ENV=production
+      - HOST=0.0.0.0
+      - PORT=4321
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:4321/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      start_period: 60s
+      retries: 3

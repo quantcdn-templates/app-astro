@@ -1,0 +1,106 @@
+---
+// Server-rendered page
+const serverTime = new Date().toISOString();
+---
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astro on Quant Cloud</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        h1 { 
+            font-size: 2.5rem; 
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #ff5d01, #ff8a4c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle { 
+            color: #a78bfa; 
+            font-size: 1.2rem; 
+            margin-bottom: 2rem; 
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .card {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .card h3 { 
+            color: #ff5d01; 
+            margin-bottom: 0.5rem; 
+        }
+        .card p { 
+            color: #a0aec0; 
+            font-size: 0.9rem; 
+        }
+        .server-time {
+            margin-top: 2rem;
+            color: #6b7280;
+            font-size: 0.8rem;
+        }
+        a { color: #ff8a4c; }
+        code {
+            background: rgba(255,255,255,0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🚀</div>
+        <h1>Astro</h1>
+        <p class="subtitle">Server-Side Rendering on Quant Cloud</p>
+        
+        <div class="cards">
+            <div class="card">
+                <h3>SSR Enabled</h3>
+                <p>Full server-side rendering with API routes</p>
+            </div>
+            <div class="card">
+                <h3>API Routes</h3>
+                <p>Check <code>/api/hello</code> for an example</p>
+            </div>
+            <div class="card">
+                <h3>Get Started</h3>
+                <p>Edit <code>src/pages/index.astro</code></p>
+            </div>
+            <div class="card">
+                <h3>Documentation</h3>
+                <p><a href="https://docs.astro.build">Astro Docs</a></p>
+            </div>
+        </div>
+        
+        <p class="server-time">Server rendered at: {serverTime}</p>
+    </div>
+</body>
+</html>

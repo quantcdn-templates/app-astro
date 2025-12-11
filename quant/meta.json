@@ -1,0 +1,10 @@
+[{
+    "title": "Astro (SSR)",
+    "url": "/deploy/step-one?template=app-astro",
+    "summary": "Production-ready Astro with server-side rendering and API routes.",
+    "content": "Astro web framework configured for server-side rendering using the Node.js adapter. Includes API route examples and full SSR support. Built on the Quant Node.js base image with SMTP and platform integration features.",
+    "image": "https://raw.githubusercontent.com/quantcdn-templates/app-astro/main/quant/screenshot.png",
+    "categories": ["framework", "nodejs", "ssr"],
+    "tags": ["astro", "ssr", "api", "nodejs", "typescript", "quant"],
+    "template_type": "app"
+}]

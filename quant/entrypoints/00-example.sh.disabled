@@ -1,0 +1,10 @@
+#!/bin/bash
+# Example entrypoint script - rename to 00-example.sh to enable
+# Scripts run in alphabetical order at container startup
+
+echo "Custom initialization running..."
+
+# Add your setup here, e.g.:
+# - Environment validation
+# - Database migrations
+# - Cache warmup
