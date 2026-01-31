@@ -1,6 +1,6 @@
 # Astro SSR Template for Quant Cloud
 
-[![Deploy to Quant Cloud](https://www.quantcdn.io/img/quant-deploy-btn-sml.svg)](https://dashboard.quantcdn.io/cloud-apps/create/starter-kit/app-astro)
+[![Deploy to Quant Cloud](https://www.quantcdn.io/img/quant-deploy-btn-sml.svg)](https://dashboard.quantcdn.io/deploy/app/app-astro)
 
 A production-ready Astro template with server-side rendering (SSR) and API routes, built on the Quant Node.js base image.
 
