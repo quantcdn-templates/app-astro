@@ -19,8 +19,8 @@ on:
     tags:
       - 'v*'
   schedule:
-    # Run weekly on Sunday at midnight UTC to pick up security updates
-    - cron: '0 0 * * 0'
+    # Run daily at midnight UTC to pick up new framework releases
+    - cron: '0 0 * * *'
   workflow_dispatch:
     inputs:
       force_rebuild:
@@ -49,6 +49,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies (generates lock file with latest versions)
+        run: npm install
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
@@ -65,27 +73,16 @@ jobs:
       - name: Detect framework version
         id: version
         run: |
-          # Extract Astro version from package.json
+          # Get actual installed Astro version from package-lock.json
           VERSION=$(node -e "
             try {
-              const pkg = require('./package.json');
-              const deps = { ...pkg.dependencies, ...pkg.devDependencies };
-              const framework = deps['astro'] || '0.0.0';
-              console.log(framework.replace(/[^0-9.]/g, ''));
+              const lock = require('./package-lock.json');
+              const pkg = lock.packages['node_modules/astro'];
+              console.log(pkg?.version || '0.0.0');
             } catch (e) {
               console.log('0.0.0');
             }
           " 2>/dev/null) || VERSION="0.0.0"
-
-          # Clean up version string (handle both x.y.z and x.y formats)
-          RAW_VERSION="$VERSION"
-          VERSION=$(echo "$RAW_VERSION" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
-          if [ -z "$VERSION" ]; then
-            VERSION=$(echo "$RAW_VERSION" | grep -oE '[0-9]+\.[0-9]+' | head -1)
-            if [ -n "$VERSION" ]; then
-              VERSION="${VERSION}.0"
-            fi
-          fi
 
           if [ -z "$VERSION" ] || [ "$VERSION" = "0.0.0" ]; then
             echo "Could not detect version, using timestamp-based version"
