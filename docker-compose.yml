@@ -1,7 +1,9 @@
 services:
   astro:
     image: ghcr.io/quantcdn-templates/app-astro:latest
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     restart: unless-stopped
     ports:
       - "4321:4321"
