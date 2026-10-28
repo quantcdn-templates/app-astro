@@ -4,6 +4,7 @@ x-quant-labels:
 
 services:
   astro:
+    image: ghcr.io/quantcdn-templates/app-astro:latest
     build: .
     restart: unless-stopped
     ports:
